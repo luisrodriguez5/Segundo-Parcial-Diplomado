@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -66,7 +72,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Base.Master" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,18 +86,108 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ColegioDb.mdf" />
+    <Content Include="App_Data\ColegioDb_log.ldf">
+      <DependentUpon>ColegioDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="Context\bootstrap.min.css" />
+    <Content Include="Context\bootstrap.min.js" />
+    <Content Include="Context\jquery-3.2.1.slim.min.js" />
+    <Content Include="Context\popper.min.js" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="UI\Consultas\cAsignatura.aspx" />
+    <Content Include="UI\Consultas\cEstudiantes.aspx" />
+    <Content Include="UI\Consultas\cProfesores.aspx" />
+    <Content Include="UI\Registros\rAsignaturas.aspx" />
+    <Content Include="UI\Registros\rEstudiantes.aspx" />
+    <Content Include="UI\Registros\rProfesores.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base.Master.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base.Master.designer.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cAsignatura.aspx.cs">
+      <DependentUpon>cAsignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cAsignatura.aspx.designer.cs">
+      <DependentUpon>cAsignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cEstudiantes.aspx.cs">
+      <DependentUpon>cEstudiantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cEstudiantes.aspx.designer.cs">
+      <DependentUpon>cEstudiantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cProfesores.aspx.cs">
+      <DependentUpon>cProfesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cProfesores.aspx.designer.cs">
+      <DependentUpon>cProfesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rAsignaturas.aspx.cs">
+      <DependentUpon>rAsignaturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rAsignaturas.aspx.designer.cs">
+      <DependentUpon>rAsignaturas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rEstudiantes.aspx.cs">
+      <DependentUpon>rEstudiantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rEstudiantes.aspx.designer.cs">
+      <DependentUpon>rEstudiantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rProfesores.aspx.cs">
+      <DependentUpon>rProfesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rProfesores.aspx.designer.cs">
+      <DependentUpon>rProfesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{83978d54-57f9-4301-93d8-9fb384f41fea}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{A6FE870B-8297-432C-BEDB-CE53EC17939F}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{46F9506F-987A-4192-91B6-F9E1170D7105}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
